@@ -313,4 +313,8 @@ switch (ENVIRONMENT)
  *
  * And away we go...
  */
+ 
+ //echo $view_folder;
+
 require_once BASEPATH.'core/CodeIgniter.php';
+

@@ -45,8 +45,10 @@ class Dashboard extends Admin_Controller {
 	 */
 	public function index()
 	{
+		
 		$this->load->model('widget_model');
 		$this->load->helper('widget_helper');
+		
 		//pr($this);
 		
 		$this->data['widgets'] = $this->widget_model->getAll($this->ion_auth->get_user_id());

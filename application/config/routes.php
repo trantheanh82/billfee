@@ -83,14 +83,16 @@ $route['^(\w{2})/(.*)'] = function($language, $link) use ($controllers_methods)
 };*/
 
 //route example: http://domain.tld/en/controller => http://domain.tld/controller
-$route['news/(:any)'] = 'news/index/$1';
-$route['(\w{2})/(.*)'] = '$2';
-$route['(\w{2})/admin'] = '/admin/dashboard';
+$route['^(\w{2})$'] = $route['default_controller'];
+
+$route['^(\w{2})/(.*)'] = '$2';
+$route['^(\w{2})/admin'] = '$1/admin/dashboard';
+
+$route['^(\w{2})/api/^(.*)'] = '/api/$2';
+
+$route['^(\w{2})/filenamager/^(.*)'] = '/filemanager/$2';
 
 //$route['(\w{2})'] = $route['default_controller'];
 
-$route['^(\w{2})$'] = $route['default_controller'];
 
-
-
-
+//$route['^(\w{2})/admin/site'] = 'module/admin/site';

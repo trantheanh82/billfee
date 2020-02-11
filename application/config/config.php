@@ -228,7 +228,7 @@ $config['log_threshold'] = 4;
 
 /*
 |--------------------------------------------------------------------------
-| Error Logging Directory Path
+| Error Logging Directory Pat1
 |--------------------------------------------------------------------------
 |
 | Leave this BLANK unless you would like to set something other than the default
@@ -540,3 +540,9 @@ $config['location']['hn'] 	= 'Hà Nội';
 
 $config['for_sell']['Y'] 	= "Có Bán";
 $config['for_sell']['N']	= "Không Bán";
+
+/* Setup config for modules
+	*/
+$config['modules_locations'] = array(
+    APPPATH . 'modules/' => '../modules/'
+);

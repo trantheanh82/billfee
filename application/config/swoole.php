@@ -20,8 +20,9 @@
 | @link https://www.swoole.co.uk/docs/modules/swoole-server-doc
 | @link https://wiki.swoole.com/wiki/page/476.html
 */
-$swoole['server_type'] = SWOOLE_SOCK_UNIX_STREAM;
-#$swoole['server_host'] = '/var/run/swoole.sock';
+//$swoole['server_type'] = SWOOLE_SOCK_UNIX_STREAM;
+//$swoole['server_host'] = '/var/run/swoole.sock';
+$swoole['server_type'] = SWOOLE_SOCK_TCP;
 $swoole['server_host'] = '127.0.0.1';
 $swoole['server_port'] = 9501;
 
@@ -33,7 +34,7 @@ $swoole['server_port'] = 9501;
 |
 | Max connection number
 */
-$swoole['max_conn'] = 256;
+$swoole['max_conn'] = 1000;
 
 
 /*
@@ -73,7 +74,7 @@ $swoole['worker_num'] = 4;
 |
 | 3: post to a free worker
 */
-$swoole['dispatch_mode'] = 2;
+$swoole['dispatch_mode'] = 3;
 
 
 /*
@@ -93,7 +94,6 @@ $swoole['task_worker_num'] = 12;
 |
 | Server log file & debug file
 */
-
 $swoole['log_file']   = APPPATH . 'logs/swoole.log';
 $swoole['debug_file'] = APPPATH . 'logs/swoole_debug.log';
 

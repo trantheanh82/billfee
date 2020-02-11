@@ -16,7 +16,8 @@
 		"cboden/ratchet": "^0.4.1",
 		"gumlet/php-image-resize": "^1.9",
 		"paragonie/random_compat": "^9.99",
-		"lanlin/codeigniter-swoole": "^2.0"
+		"react/react": "^1.0",
+		"chriskacerguis/codeigniter-restserver": "^3.1"
 	},
 	"suggest": {
 		"paragonie/random_compat": "Provides better randomness in PHP 5.x"
