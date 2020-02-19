@@ -56,7 +56,7 @@ $(document).ready(function(){
 	    'use strict';
 	    // Change this to the location of your server-side upload handler:
 	    var url = window.location.hostname === 'blueimp.github.io' ?
-	                '//jquery-file-upload.appspot.com/' : '<?=$this->config->base_url()?>upload/',
+	                '//jquery-file-upload.appspot.com/' : '<?=$this->config->base_url().$current_lang?>/admin/upload/',
 	        uploadButton = $('<button/>')
 	            .addClass('btn btn-primary')
 	            .prop('disabled', true)
@@ -77,6 +77,7 @@ $(document).ready(function(){
 	                });
 	                return false;
 	            });
+	            
 	       $('#fileupload_<?=$id?>').fileupload({
 	        url: url,
 	        <?=$multiple ? "":"maxNumberOfFiles:1,"?>
@@ -106,7 +107,7 @@ $(document).ready(function(){
 	        $.each(data.files, function (index, file) {
 	        	
 	            var node = $('<p/>')
-	                    .append($('<span/>').text(file.name));
+	                    .append($('<span/>').text(file.name.substring(0,10)+'...'+file.name.substring(file.name.length -4,file.name.length)));
 	            if (!index) {
 		            if(!autoUpload){
 	                node
@@ -159,8 +160,8 @@ $(document).ready(function(){
 	                var delete_link = $('<a>').attr('target','_blank')
 	                .prop('href',"<?=base_url()?>admin/upload/delete/"+file.name);*/
 	               
-	                var content = "<br /><a class='abc' style='color:#f00' href='<?=base_url()?>admin/upload/delete?filename="+file.name+"&model=<?=$type_file?>'>Delete</a></p>"; 
-	                
+	                var content = "<br /><a class='fileupload-command-delete' style='color:#f00' href='<?=base_url().$current_lang?>/admin/upload/delete?filename="+file.name+"&model=<?=$type_file?>'>Delete</a></p>"; 
+	                console.log(content);
 	                $(data.context.children()[index])
 	                    .append(content);
 	                    
@@ -172,8 +173,8 @@ $(document).ready(function(){
 			                	}
 	                <?php }else{?>
 	                	$('input[name~="<?=$file?>"]').attr('value',file.name);
-	                	$('#<?=$id?> img').attr('src','<?=base_url()?>assets/upload/<?=$id?>/thumbnail/'+file.name);
-	                	$('#<?=$id?> img').attr('height','80');
+	                	$('#<?=$id?> img').attr('src','<?=base_url()?>assets/upload/<?=$id?>/thumbnail/'+file.name).attr('height','80').attr('class','border-notrans');
+	                	//$('#<?=$id?> img').attr('height','80');
 	                <?php 
 						} 
 	                ?>
@@ -197,5 +198,24 @@ $(document).ready(function(){
 	        .parent().addClass($.support.fileInput ? undefined : 'disabled');
 	});
 });
+
+// Delete File 
+$(document).ready(function(){
+	$(document).on('click','.fileupload-command-delete',function(){
+		
+		obj = $(this);
+		
+		$.ajax({
+			url: $(this).attr('href')
+		})
+		.done(function(data){
+			if(data == 'done'){
+				
+				obj.parent('p').parent('div.col-md-4').fadeOut('fast');
+			}
+		});
+		return false;
+	})
+})
 </script>
 <?php //unset($file)?>

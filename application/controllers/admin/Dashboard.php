@@ -9,7 +9,7 @@ class Dashboard extends Admin_Controller {
 		if(!$this->ion_auth->in_group('admin'))
         {
             $this->session->set_flashdata('message','You are not allowed to visit the Pages page');
-            redirect('admin/user/login','refresh');
+            redirect('admin/auth/login','refresh');
         }
         
         $this->data['page_name'] = 'Dash Board';

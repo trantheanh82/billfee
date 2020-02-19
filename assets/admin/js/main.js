@@ -153,6 +153,10 @@ function startjs(){
 	});
 	
 	
+	$(document).on('mouseover','.border-trans',function(){
+		$(this).addClass('border-notrans').on('mouseleave',function(){$(this).removeClass('border-notrans')});
+		
+	})
 	/**
 		Begin CKEDITOR
 	**/
@@ -171,21 +175,15 @@ window.onload = function(){
 			CKEDITOR.replace($(this).attr('id'),{
 				customConfig: "/billfee/assets/admin/ckeditor/config/article_config.2.js"
 			});
-		});
+		});*/
 		
-		/*$('.product-editor').each(function(){
+		$('.product-editor').each(function(){
 			
 			CKEDITOR.replace($(this).attr('id'),{
 				customConfig: "/billfee/assets/admin/ckeditor/config/product_config.js"
 			});
-		});*/
+		});
 		
-		ClassicEditor
-            .create( document.querySelector( '.product-editor' ) )
-            .catch( error => {
-                console.error( error );
-            } );
-
 }
 		
 

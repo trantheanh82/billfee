@@ -13,7 +13,7 @@ class MY_Controller extends MX_Controller {
 	
 
 	function __construct(){
-
+		
 		parent::__construct();
 		
 		if (version_compare(CI_VERSION, '2.1.0', '<')) {
@@ -94,7 +94,7 @@ class MY_Controller extends MX_Controller {
 		$this->data['css_for_elements'] = '';
 
 		$this->data['before_head'] .= assets('js/vendor/jquery-1.12.4.min.js',false);
-
+	
 	}
 
 	protected function render($the_view = NULL, $template = 'master'){

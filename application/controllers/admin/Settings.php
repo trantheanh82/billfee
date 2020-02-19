@@ -26,7 +26,7 @@ class Settings extends Admin_Controller
 	function general(){
 		$this->data['page_title'] = "Settings: General";
 		$this->data['form_settings'] = $this->getSettings(1);
-		//pr($this->data['form_settings']);
+		
 		$this->render('admin/settings/settings_view','admin_master');
 	}
 	

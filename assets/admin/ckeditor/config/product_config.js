@@ -25,6 +25,8 @@ CKEDITOR.editorConfig = function( config ) {
 		{ name: 'colors' },
 		{ name: 'about' }
 	];
+	
+	config.width = '100%';
 
 	// Remove some buttons provided by the standard plugins, which are
 	// not needed in the Standard(s) toolbar.
@@ -36,8 +38,9 @@ CKEDITOR.editorConfig = function( config ) {
 	// Simplify the dialog windows.
 	config.removeDialogTabs = 'link:advanced;image:file';
 	
-	config.filebrowserBrowseUrl = '/billfee/filemanager/dialog.php?akey=abc';
-	config.filebrowserUploadUrl = '/billfee/filemanager/dialog.php?akey=abc';
+	config.filebrowserBrowseUrl = '/billfee/filemanager/dialog.php?type=1&akey=abc&editor=ckeditor&fldr=';
+	config.filebrowserUploadUrl = '/billfee/filemanager/dialog.php?type=1&akey=abc&editor=ckeditor&fldr=';
+	config.filebrowserImageBrowseUrl = '/billfee/filemanager/dialog.php?type=1&akey=abc&editor=ckeditor&fldr=';
 	
 	//config.extraPlugins = "dialogadvtab";
 	

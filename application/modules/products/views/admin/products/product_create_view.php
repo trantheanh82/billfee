@@ -4,6 +4,7 @@
 	$this->load->view('admin/elements/flash_message_view');
 	
 	$this->load->view('admin/elements/section_header_view');
+	
 ?>
 
 	<!-- Main Content -->
@@ -29,7 +30,7 @@
 				 <div class='col-sm-9'>
 					<p style="padding-bottom:10px;" id='product'><img src='' /></p>
 		     	 	<?php	
-		    			$this->load->view('admin/elements/fileupload_view.php',array('file'=>'product_image','id'=>'product_image','value'=>'','type_file'=>'product','multiple'=>true));
+		    			$this->load->view('admin/elements/fileupload_view.php',array('file'=>'product_image','id'=>'product_image','value'=>'','type_file'=>'product','multiple'=>true,'current_lang'=>$current_lang['slug']));
 		    		?>
 		    		
 		    		
@@ -65,8 +66,8 @@
             
             <div class='form-group'>
 	            <label class="control-label col-sm-2" for="pwd"><?=__('Description',$this)?></label>
-				 <div class='col-sm-9 col-md-10'>
-					<textarea class="form-control editor" id="editor1" name="description"></textarea>
+				 <div class='col-sm-9 col-md-9'>
+					<textarea class="form-control product-editor" id="editor1" name="description"></textarea>
 				 </div>
             </div>
             

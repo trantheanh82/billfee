@@ -4,13 +4,7 @@
 	?>
 <section class='content'>
     <!-- Main content -->
-		<div class="row">
-			<textarea id="editor1" class="editor"></textarea>
-		</div>
 		
-		<div class="row">
-			<textarea id="editor2" class="editor"></textarea>
-		</div>
       <!-- Info boxes -->
       <div class="row">
 	      <?php

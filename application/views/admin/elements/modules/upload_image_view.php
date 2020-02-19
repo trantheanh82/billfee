@@ -1,13 +1,12 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');?>
-
 <button type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#modal-default"><?=__($button_name,$this)?></button>
 <br /><br />
-<div class='image-placehold mt-10' style='max-width:150px'>
+<div class='image-placehold mt-10' style='max-width:<?=isset($max_width)?$max_width:"150px";?>'>
 	
-	<p style='position:absolute;left:<?=	isset($max_width)?$max_width:"150px";?>;' class='hide remove-placehold-image' title='<?=__('remove image',$this)?>'><icon class='fa fa-trash red'></icon></p>
+	<p style='position:absolute;left:<?=isset($max_width)?$max_width:"150px";?>;' class='hide remove-placehold-image' title='<?=__('remove image',$this)?>'><icon class='fa fa-trash red'></icon></p>
 	
-	<img src="<?=($value != "")?$value:""?>" id='img_<?=$id?>' class='img-responsive profile-avatar' 
-		style='cursor:pointer;max-width:<?=	isset($max_width)?$max_width:"150px";?>;border:1px solid #8884;'
+	<img src="<?=($value != "")?$value:""?>" id='img_<?=$id?>' class='img-responsive profile-avatar border-trans' 
+		style='cursor:pointer;width:<?=	isset($max_width)?$max_width:"150px";?>;'
 		 data-toggle='modal' data-target='#modal-default'
 		onerror="this.src='<?=base_url()?>assets/images/images-empty.png';"/>	
 		

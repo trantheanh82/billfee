@@ -49,7 +49,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | Examples:	my-controller/index	-> my_controller/index
 |		my-controller/my-method	-> my_controller/my_method
 */
-$route['default_controller'] = 'home';
+$route['default_controller'] = 'dashboard';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = TRUE;
 
@@ -86,7 +86,7 @@ $route['^(\w{2})/(.*)'] = function($language, $link) use ($controllers_methods)
 $route['^(\w{2})$'] = $route['default_controller'];
 
 $route['^(\w{2})/(.*)'] = '$2';
-$route['^(\w{2})/admin'] = '$1/admin/dashboard';
+$route['^(\w{2})/admin'] = '/admin/dashboard';
 
 $route['^(\w{2})/api/^(.*)'] = '/api/$2';
 

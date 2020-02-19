@@ -47,6 +47,11 @@ class Auth extends Admin_Controller {
 	// log the user in
 	public function login()
 	{
+		if ($this->ion_auth->logged_in())
+		{
+			// redirect them to the login page
+			redirect('admin/dashboard', 'refresh');
+		}
 
 		$this->data['page_title'] = $this->lang->line('login_heading');
 

@@ -48,7 +48,9 @@
 <script src="<?=base_url()?>assets/admin/js/adminlte.js"></script>
 <!-- FastClick -->
 <!--<script src="<?=base_url()?>assets/admin/ckeditor/ckeditor.js"></script>-->
-<script src="https://cdn.ckeditor.com/ckeditor5/12.4.0/classic/ckeditor.js"></script>
+<!--<script src="https://cdn.ckeditor.com/ckeditor5/12.4.0/classic/ckeditor.js"></script>-->
+<script src="https://cdn.ckeditor.com/4.13.1/standard/ckeditor.js"></script>
+
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <!--<script src="<?=base_url()?>assets/admin/js/pages/dashboard.js"></script>-->
 <!-- AdminLTE for demo purposes -->

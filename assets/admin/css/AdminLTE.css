@@ -4981,3 +4981,12 @@ table.text-center th {
     white-space: normal !important;
   }
 }
+
+/*---------------*/
+.border-trans{
+	border: 1px solid rgba(003,003,003,0.0);
+}
+
+.border-notrans{
+	border: 1px solid rgba(003,003,003,0.9);
+}

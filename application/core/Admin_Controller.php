@@ -6,6 +6,7 @@ class Admin_Controller extends MY_Controller{
 	function __construct(){
 
 		parent:: __construct();
+		
 		$this->load->library('Ion_auth');
 
 		//$this->__checkpermissions();
@@ -31,7 +32,7 @@ class Admin_Controller extends MY_Controller{
 				//redirect('admin/user/login', 'refresh');
 			//}
 			if(!preg_match('/login/',$this->uri->uri_string()) && !$this->session->userdata('logged_in')){
-				redirect('admin/user/login','refresh');
+				redirect('admin/auth/login','refresh');
 			}
 		}
 

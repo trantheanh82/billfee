@@ -35,7 +35,11 @@ if(! function_exists('value')){
 		}else{
 			return "";
 		}
+	}	
+}
+
+if(! function_exists('render_editor')){
+	function render_editor(){
+		
 	}
-	
-	
 }

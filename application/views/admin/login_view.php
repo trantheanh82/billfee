@@ -34,8 +34,11 @@
   <style>
 	 
 	  .login-page{
-		  	background: transparent url("<?=$background?>") center !important;
-		  	background-size: auto ; }
+		  	background: transparent url("<?=$background?>") center center fixed !important;
+		  	-webkit-background-size: cover;
+			  -moz-background-size: cover;
+			  -o-background-size: cover;
+			  background-size: cover; }
 		  	
 	  </style>
   <!-- Google Font -->

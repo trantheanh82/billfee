@@ -24,7 +24,7 @@
 							     	 		break;
 							     	 	case "image":
 							     	 	echo "<div>";
-							     	 		$this->load->view("admin/elements/modules/upload_image_view",array('field_id'=>$v->form_name,'id'=>$v->form_name,'value'=>$v->value,'multiple'=>false,'path'=>'/img','button_name'=>'Upload logo'));
+							     	 		$this->load->view("admin/elements/modules/upload_image_view",array('field_id'=>$v->form_name,'id'=>$v->form_name,'value'=>$v->value,'multiple'=>false,'path'=>'/img','button_name'=>$v->form_name,'max_width'=>'100%'));
 							     	 	echo "</div>";
 							     	 		break;
 							     	 	case "checkbox":

@@ -47,6 +47,7 @@
   <?php //link_tag('assets/ckeditor/contents.css')?>
    <!-- text editor -->
   <?=link_tag('assets/admin/ckeditor/skins/moono/editor.css')?>
+  
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -91,9 +92,9 @@
 			}
 ?>
 <div class="pull-right hidden-xs">
-  <b>Version</b> 2.4.13
+  <b>Version</b> 1.0
 </div>
-<strong>Copyright © 2014-2019 <a href="#">Beeplatform</a>.</strong> All rights
+<strong>Copyright © 2014-<?=date('Y')?> <a href="#">Beeplatform</a>.</strong> All rights
 reserved.
 </footer>
 
