@@ -5,7 +5,7 @@
 	
 	$this->load->view('admin/elements/section_header_view');
 	
-	$tabs = array('Thông tin chung','Thông tin không chung');
+	$tabs = array('Thông tin chung','Hình ảnh');
 ?>
 	<!-- Main Content -->
 <form class="form-horizontal" role="form" action="<?=site_url('admin/products/submit')?>" method="post" id='main_form_submit'>
@@ -147,8 +147,9 @@
 		      </div>
 	    	</div>
 		</div>
+		
 		<div class='tab-pane' id='tab_2'>
-			content here
+			<?=$this->load->view('/elements/');
 		</div>
 		
 	</div>

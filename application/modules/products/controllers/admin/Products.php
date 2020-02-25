@@ -29,15 +29,6 @@ class Products extends Admin_Controller {
 	
 	function create(){
 		$this->__loadScriptUpload();
-		
-		$this->load->model('province_model');
-		$this->load->model('district_model');
-		$this->load->model('ward_model');
-		
-		$this->data['list_province'] = $this->province_model->as_dropdown('_name')->where(array('id'=>1))->get_all();
-		$this->data['list_district'] = $this->district_model->as_dropdown('_name')->where(array('_province_id'=>1))->get_all();
-		$this->data['list_ward'] = $this->ward_model->as_dropdown('_name')->where(array('_district_id'=>4))->get_all();
-
 				
 		$this->render('admin/products/product_create_view');
 
@@ -47,17 +38,10 @@ class Products extends Admin_Controller {
 	function edit($id){
 		$this->__loadScriptUpload();
 		
-		$this->load->model('province_model');
-		$this->load->model('district_model');
-		$this->load->model('ward_model');
-		
-		$this->data['list_province'] = $this->province_model->as_dropdown('_name')->where(array('id'=>1))->get_all();
-		$this->data['list_district'] = $this->district_model->as_dropdown('_name')->where(array('_province_id'=>1))->get_all();
-		$this->data['list_ward'] = $this->ward_model->as_dropdown('_name')->where(array('_district_id'=>4))->get_all();
 		
 		$this->data['for_sells'] = $this->config->item('for_sell');;
 		
-		$this->data['item'] = $this->product_model->get($id);
+		$this->data['item'] = $this->product_model->get_product($id);
 		
 		$this->render('admin/products/product_edit_view');
 	}
@@ -80,6 +64,8 @@ class Products extends Admin_Controller {
 			$data = $this->input->post();
 			
 			$data_id = 0;
+			
+			
 			if(isset($data['id'])){
 				$data_id = $data['id'];
 			}
@@ -97,6 +83,7 @@ class Products extends Admin_Controller {
 			
 			if(!empty($data['id'])){
 				if($this->product_model->update($data,$data['id'])){
+					$this->_insert_images($images,$data);
 					$this->session->set_flashdata('message','Product has been updated');
 				}else{
 					$this->session->set_flashdata('error','Error occures. Please try again');
@@ -106,10 +93,11 @@ class Products extends Admin_Controller {
 				if(!isset($data['page_title'])){
 					$data['page_title'] = $data['name'];
 				}
-				
-				
 								
-				if($this->product_model->insert($data)){
+				if($this->product_model->insert($images,$data)){
+					
+					$this->_insert_images($data);
+					
 					$this->session->set_flashdata('message','Product has been created');
 				}else{
 					$this->session->set_flashdata('error','Error occures. Please try again');
@@ -117,6 +105,30 @@ class Products extends Admin_Controller {
 			}
 			
 			redirect('admin/products','refresh');
+		}
+	}
+	
+	function _insert_images($images,$data){
+		if(!empty($images)){
+			$this->load->model('image_model');
+			if(is_array($images[0])){
+				// do something update multi product image
+			}else{
+				foreach($images as $k => $v){
+					
+					$image['model'] = 'product';
+					$image['model_id'] = $data['id'];
+					$image['image'] = $v;
+					$image['alt'] = $data['name'];
+					
+					if(!$this->image_model->insert($image)){
+						$this->session->set_flashdata('error','Error occures. Please try again');
+						redirect('admin/products','refresh');
+					}
+					
+				}
+			}
+			
 		}
 	}
 

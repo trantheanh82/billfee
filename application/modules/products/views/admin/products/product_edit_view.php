@@ -5,8 +5,8 @@
 	
 	$this->load->view('admin/elements/section_header_view');
 	
-	$tabs = array('Thông tin chung','Thông tin không chung');
-?>
+	$tabs = array(__('General',$this),__('Images',$this));
+	?>
 	<!-- Main Content -->
 <form class="form-horizontal" role="form" action="<?=site_url('admin/products/submit')?>" method="post" id='main_form_submit'>
 
@@ -69,53 +69,14 @@
 					?>
 				 </div>
             </div>
-            
-           <!-- <div class="form-group">
-				 <label class="control-label col-sm-2" for="pwd"><?=__('Price (m2)',$this)?></label>
-				 <div class='col-sm-9'>
-					<?php
-						echo form_hidden('price_by_m2',value($item->price_by_m2),"id='simple_price");
-						echo form_input('makeup_price_m2',value($item->price_by_m2),"id='makeup_price_m2' class='form-control currency'");
-					?>
-				 </div>
-            </div>-->
-            
+                       
             <div class='form-group'>
 	            <label class="control-label col-sm-2" for="pwd"><?=__('Description',$this)?></label>
 				 <div class='col-sm-9 col-md-10'>
 					<textarea class="form-control product-editor" id="description" name="description"><?=value($item->description)?></textarea>
 				 </div>
             </div>
-            
-            
-            
-           <!-- <div class="form-group">
-				 <label class="control-label col-sm-2" for="pwd"><?=__('Province',$this)?></label>
-				 <div class='col-sm-9'>
-					<?php
-						 echo form_dropdown('province_id',$list_province,$item->province_id,'class="form-control"');
-					?>
-				 </div>
-            </div>
-            
-            <div class="form-group">
-				 <label class="control-label col-sm-2" for="pwd"><?=__('District',$this)?></label>
-				 <div class='col-sm-9'>
-					<?php
-						 echo form_dropdown('district_id',$list_district,$item->district_id,'class="form-control"');
-					?>
-				 </div>
-            </div>
-            
-             <div class="form-group">
-				 <label class="control-label col-sm-2" for="pwd"><?=__('Ward',$this)?></label>
-				 <div class='col-sm-9'>
-					<?php
-						 echo form_dropdown('ward_id',$list_ward,$item->ward_id,'class="form-control"');
-					?>
-				 </div>
-            </div>-->
-            
+                       
 	          <div class='form-group'>
 	            <label class="control-label col-sm-2" for="pwd">Sort</label>
 				 <div class='col-sm-9'>
@@ -147,9 +108,11 @@
 		      </div>
 	    	</div>
 		</div>
+		<!-- Tab Images -->
 		<div class='tab-pane' id='tab_2'>
-			content here
+			<?php $this->load->view('admin/elements/product_images',array('value'=>$item->images));?>
 		</div>
+		<!-- ./end Tab Images -->
 		
 	</div>
 	

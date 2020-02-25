@@ -26,8 +26,17 @@
         <span>Add files...</span>
         <!-- The file input field used as target for the file upload widget -->
         <input id="fileupload_<?=$id?>" type="file" name="files_<?=$file?>" <?=$multiple ? "multiple":""?> />
+        <?php
+	        if(is_array($value)):
+	    ?>
+	    <?php
+		    else:
+		    ?>
         <input type='hidden' name='<?=$file?><?=$multiple?"[]":""?>' value="<?=$value?>" />
         <input type='hidden' name='type_file' value='<?=$type_file?>' />
+        <?php
+	        endif;
+	    ?>
     </span>
     <br>
     <br>
@@ -56,7 +65,7 @@ $(document).ready(function(){
 	    'use strict';
 	    // Change this to the location of your server-side upload handler:
 	    var url = window.location.hostname === 'blueimp.github.io' ?
-	                '//jquery-file-upload.appspot.com/' : '<?=$this->config->base_url().$current_lang?>/admin/upload/',
+	                '//jquery-file-upload.appspot.com/' : '<?=$this->config->base_url().$current_lang['slug']?>/admin/upload/',
 	        uploadButton = $('<button/>')
 	            .addClass('btn btn-primary')
 	            .prop('disabled', true)
@@ -160,7 +169,7 @@ $(document).ready(function(){
 	                var delete_link = $('<a>').attr('target','_blank')
 	                .prop('href',"<?=base_url()?>admin/upload/delete/"+file.name);*/
 	               
-	                var content = "<br /><a class='fileupload-command-delete' style='color:#f00' href='<?=base_url().$current_lang?>/admin/upload/delete?filename="+file.name+"&model=<?=$type_file?>'>Delete</a></p>"; 
+	                var content = "<br /><a class='fileupload-command-delete' style='color:#f00' href='<?=base_url().$current_lang['slug']?>/admin/upload/delete?filename="+file.name+"&model=<?=$type_file?>'>Delete</a></p>"; 
 	                console.log(content);
 	                $(data.context.children()[index])
 	                    .append(content);
@@ -174,7 +183,6 @@ $(document).ready(function(){
 	                <?php }else{?>
 	                	$('input[name~="<?=$file?>"]').attr('value',file.name);
 	                	$('#<?=$id?> img').attr('src','<?=base_url()?>assets/upload/<?=$id?>/thumbnail/'+file.name).attr('height','80').attr('class','border-notrans');
-	                	//$('#<?=$id?> img').attr('height','80');
 	                <?php 
 						} 
 	                ?>
