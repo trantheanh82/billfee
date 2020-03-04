@@ -27,9 +27,15 @@
         <!-- The file input field used as target for the file upload widget -->
         <input id="fileupload_<?=$id?>" type="file" name="files_<?=$file?>" <?=$multiple ? "multiple":""?> />
         <?php
+	        // generate form if files is array
 	        if(is_array($value)):
+	        	foreach($value as $k => $v):
 	    ?>
+			<input type='hidden' name="<?=$file?>[<?=$k?>]" value="<?=$v?>" />
+
 	    <?php
+		    	endforeach;
+		    	//end foreach generate multi files
 		    else:
 		    ?>
         <input type='hidden' name='<?=$file?><?=$multiple?"[]":""?>' value="<?=$value?>" />
@@ -209,6 +215,8 @@ $(document).ready(function(){
 
 // Delete File 
 $(document).ready(function(){
+	
+	
 	$(document).on('click','.fileupload-command-delete',function(){
 		
 		obj = $(this);
@@ -224,6 +232,8 @@ $(document).ready(function(){
 		});
 		return false;
 	})
+	
+	
 })
 </script>
 <?php //unset($file)?>

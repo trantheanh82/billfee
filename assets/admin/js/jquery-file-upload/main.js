@@ -43,6 +43,8 @@ $(function () {
             maxFileSize: 999000,
             acceptFileTypes: /(\.|\/)(gif|jpe?g|png)$/i
         });
+        
+        
         // Upload server status check for browsers with CORS support:
         if ($.support.cors) {
             $.ajax({

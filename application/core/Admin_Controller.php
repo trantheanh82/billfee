@@ -95,9 +95,18 @@ class Admin_Controller extends MY_Controller{
 			
 			
 			$script = '
+			    <!-- The jQuery UI widget factory, can be omitted if jQuery UI is already included -->
+				'.assets("js/jquery-file-upload/vendor/jquery.ui.widget.js").'
+				<!-- The Templates plugin is included to render the upload/download listings -->
+				'.assets("js/jquery-file-upload/tmpl.min.js").'
 				<!-- The Iframe Transport is required for browsers without support for XHR file uploads -->
-				'.assets("js/jquery-file-upload/load-image.all.min.js").' '
-				.assets("js/jquery-file-upload/jquery.iframe-transport.js").'
+				'.assets("js/jquery-file-upload/load-image.all.min.js").'
+				<!-- The Canvas to Blob plugin is included for image resizing functionality -->
+				'.assets("js/jquery-file-upload/canvas-to-blob.min.js").'
+				<!-- blueimp Gallery script -->
+				'.assets("js/jquery-file-upload/jquery.blueimp-gallery.min.js").'
+				<!-- The Iframe Transport is required for browsers without support for XHR file uploads -->
+				'.assets("js/jquery-file-upload/jquery.iframe-transport.js").'
 				<!-- The basic File Upload plugin -->
 				'.assets("js/jquery-file-upload/jquery.fileupload.js").'
 				<!-- The File Upload processing plugin -->
@@ -109,7 +118,9 @@ class Admin_Controller extends MY_Controller{
 				<!-- The File Upload video preview plugin -->
 				'.assets("js/jquery-file-upload/jquery.fileupload-video.js").'
 				<!-- The File Upload validation plugin -->
-				'.assets("js/jquery-file-upload/jquery.fileupload-validate.js");
+				'.assets("js/jquery-file-upload/jquery.fileupload-validate.js").'
+				    <!-- The File Upload user interface plugin -->
+				'.assets("js/jquery-file-upload/jquery.fileupload-ui.js");
 				
 			if($this->input->is_ajax_request()){
 				$this->data['script_for_page'] .= "<!--- script for page --->". $script . "<!---./script for page -->";

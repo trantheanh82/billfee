@@ -30,7 +30,7 @@ class Products extends Admin_Controller {
 	function create(){
 		$this->__loadScriptUpload();
 				
-		$this->render('admin/products/product_create_view');
+		$this->render('admin/products/product_create_edit_view');
 
 
 	}
@@ -38,12 +38,8 @@ class Products extends Admin_Controller {
 	function edit($id){
 		$this->__loadScriptUpload();
 		
-		
-		$this->data['for_sells'] = $this->config->item('for_sell');;
-		
-		$this->data['item'] = $this->product_model->get_product($id);
-		
-		$this->render('admin/products/product_edit_view');
+		$this->data['item'] = $this->product_model->get_product($id);		
+		$this->render('admin/products/product_create_edit_view');
 	}
 	
 	function delete($id){
@@ -62,7 +58,6 @@ class Products extends Admin_Controller {
 	function submit(){
 		if(!empty($this->input->post())){
 			$data = $this->input->post();
-			
 			$data_id = 0;
 			
 			
@@ -94,9 +89,9 @@ class Products extends Admin_Controller {
 					$data['page_title'] = $data['name'];
 				}
 								
-				if($this->product_model->insert($images,$data)){
+				if($data['id'] = $this->product_model->insert($data)){
 					
-					$this->_insert_images($data);
+					$this->_insert_images($images,$data);
 					
 					$this->session->set_flashdata('message','Product has been created');
 				}else{
@@ -111,24 +106,22 @@ class Products extends Admin_Controller {
 	function _insert_images($images,$data){
 		if(!empty($images)){
 			$this->load->model('image_model');
-			if(is_array($images[0])){
-				// do something update multi product image
-			}else{
-				foreach($images as $k => $v){
-					
-					$image['model'] = 'product';
-					$image['model_id'] = $data['id'];
-					$image['image'] = $v;
-					$image['alt'] = $data['name'];
-					
-					if(!$this->image_model->insert($image)){
-						$this->session->set_flashdata('error','Error occures. Please try again');
-						redirect('admin/products','refresh');
-					}
-					
-				}
-			}
 			
+			$image_exists = $this->image_model->where(array('model'=>'product','model_id'=>$data['id']))->get();
+			
+			$serialize_images = serialize($images);
+				
+			$image['image'] = $serialize_images;
+			$image['model'] = 'product';
+			$image['model_id']  = $data['id']; 
+			$image['alt']	=	$data['name'];
+			
+			
+			if(empty($image_exists)){
+				$this->image_model->insert($image);
+			}else{
+				$this->image_model->update($image,$image_exists->id);
+			}
 		}
 	}
 

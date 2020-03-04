@@ -5,10 +5,7 @@
 <?=content_open($page_name,$this)?>
 <form class="form-horizontal" role="form" action="<?=site_url('admin/articles/submit')?>" method="post" id='main_form_submit'>
 <?php
-	if(isset($item->id)){
-		
-		echo form_hidden("id",$item->id);
-	}
+	echo form_hidden("id",value(isset($item->id)?$item->title:""));
 ?>
 	<div class='box-body'>
 		<!-- ./col left -->
